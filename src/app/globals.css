@@ -2,20 +2,214 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* preload page */
+/* Add to your global CSS or a CSS module */
+@keyframes logoAnimation {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  50% {
+      transform: scale(1.1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-logo {
+  animation: logoAnimation 2s ease-out forwards; /* 2s for 2 seconds animation */
+}
+
+/* ------------ */
+
+
+.text-gradient-anim {
+    background: -webkit-linear-gradient(left, #545cff, #1f2246, #545cff);
+    background-size: 1600px 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation-duration: 3s;
+    -o-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-name: gradientMove;
+    -o-animation-name: gradientMove;
+    animation-name: gradientMove;
+    -webkit-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+
+/* logo */
+#logo:hover #line1 {
+    animation: slideIn 1s ease-in-out infinite alternate;
+  }
+  
+  #logo:hover #line2 {
+    animation: fadeIn 1s ease-in-out infinite alternate;
+  }
+  
+  #logo:hover #line3 {
+    animation: grow 1s ease-in-out infinite alternate;
+  }
+  
+  #logo:hover #angle1,
+  #logo:hover #angle2,
+  #logo:hover #angle3 {
+    animation: rotate 1.5s linear infinite;
+  }
+  
+  /* Keyframes */
+  @keyframes slideIn {
+    from {
+      transform: translateX(-10px);
+    }
+    to {
+      transform: translateX(10px);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes grow {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+/* blue background */
+.bg-gradient-bottom {
+    background-image: radial-gradient(circle at 75% 140%, #545cff 0, transparent 35%);
+}
+.bg-gradient-left {
+  background-image: radial-gradient(circle at -20% 21%, #545cff 0, transparent 30%), radial-gradient(circle at 120% 80%, #545cff 0, transparent 30%);
+}
+
+/* Running text */
+.running-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide overflowing text */
+  position: relative;
+}
+
+/* cards */
+.project-card {
+  transform: translateX(100px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.animate-card {
+  transform: translateX(0);
+  opacity: 1;
+}
+.header-section {
+  transform: translateX(100px);
+  opacity: 0;
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+}
+
+.animate-header {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* work scroll bar */
+.scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden; /* Avoid vertical scrolling within the container */
+  white-space: nowrap; /* Ensure horizontal scrolling works properly */
+  -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar in Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;  /* Hide scrollbar in Webkit-based browsers (Chrome, Safari) */
+}
+
+
+/* testimonial scroll bar */
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Reduce the width of the scrollbar */
+  height: 8px; /* Optional: reduce the height of the scrollbar for horizontal scrolling */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3b82f6; /* Replace with your blue color */
+  border-radius: 8px; /* Makes the scrollbar rounded */
+  border: 2px solid transparent; /* Adds space between the scrollbar and the edge */
+  background-clip: padding-box; /* Ensures the border doesn't cover the thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #1f2937; /* Dark gray track */
+  border-radius: 8px; /* Makes the track rounded */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #1f2937; /* Thumb color, Track color */
+}
+
+@keyframes zoomInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.8);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes zoomOutDown {
+  0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.8);
+  }
+}
+
+.animate-zoom-in-up {
+  animation: zoomInUp 0.5s ease-in-out forwards;
+}
+
+.animate-zoom-out-down {
+  animation: zoomOutDown 0.5s ease-in-out forwards;
 }
