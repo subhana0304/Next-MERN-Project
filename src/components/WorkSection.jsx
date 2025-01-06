@@ -175,6 +175,7 @@ export default function WorkSection() {
         <div className="footer flex items-center justify-center m-16">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">View More</h2>
+            <Link href={"/CreateProject"}>
             <button className="rounded-full border-[#545cFf] border text-center overflow-hidden px-7 py-4">
               <motion.span
                 initial={{ y: 0 }}
@@ -182,9 +183,10 @@ export default function WorkSection() {
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="block text-[24px] font-medium"
               >
-                Case Studies
+                Create More
               </motion.span>
             </button>
+            </Link>
           </div>
         </div>
       </div>
