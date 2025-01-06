@@ -1,35 +1,74 @@
-'use client'
+'use client';
 
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function CreateProject() {
   const [formData, setFormData] = useState({
-    title: "",
-    image: "",
-    tags: "",
-    link: "",
+    title: '',
+    image: '',
+    tags: '',
+    link: '',
+    isLatest: false,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newProject = {
-      ...formData,
-      tags: formData.tags.split(",").map((tag) => tag.trim()),
-    };
-    console.log("New Project:", newProject);
-    alert("Project created successfully!");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
     setFormData({
-      title: "",
-      image: "",
-      tags: "",
-      link: "",
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+  
+    const newProject = {
+      ...formData,
+      tags: formData.tags.split(',').map((tag) => tag.trim()),
+    };
+  
+    // Clear the form fields immediately after submission
+    setFormData({
+      title: '',
+      image: '',
+      tags: '',
+      link: '',
+      isLatest: false,
+    });
+  
+    try {
+      const response = await fetch('http://localhost:3001/api/projects', {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(newProject),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Project created successfully:', data);
+        alert('Project created successfully!');
+        router.push("/");
+      } else {
+        const errorData = await response.json();
+        console.error('Failed to create project:', errorData);
+        alert(`Failed to create project: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error('Error while creating project:', error);
+      alert('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   return (
     <div className="container mx-auto p-8">
@@ -102,11 +141,30 @@ export default function CreateProject() {
           />
         </div>
 
+        <div className="mb-4 flex items-center">
+          <input
+            type="checkbox"
+            id="isLatest"
+            name="isLatest"
+            checked={formData.isLatest}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          <label htmlFor="isLatest" className="text-lg font-medium">
+            Mark as Latest Project
+          </label>
+        </div>
+
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+          className={`w-full py-3 text-white font-semibold rounded-lg transition duration-300 ${
+            loading
+              ? 'bg-gray-500 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+          disabled={loading}
         >
-          Create Project
+          {loading ? 'Creating...' : 'Create Project'}
         </button>
       </form>
     </div>
