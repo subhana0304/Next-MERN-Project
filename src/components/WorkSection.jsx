@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const projects = [
   {
@@ -39,7 +39,9 @@ const projects = [
   }
 ]
 
+
 export default function WorkSection() {
+  
   useEffect(() => {
     const header = document.querySelector('.header-section');
     const cards = document.querySelectorAll('.project-card');
