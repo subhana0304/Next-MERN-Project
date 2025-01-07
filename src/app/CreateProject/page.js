@@ -43,7 +43,7 @@ export default function CreateProject() {
     });
   
     try {
-      const response = await fetch('https://next-mern-project.netlify.app/api/projects', {
+      const response = await fetch('/api/projects', {
         method: 'POST',
         headers: {
           "Content-type": "application/json",
