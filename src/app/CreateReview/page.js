@@ -39,7 +39,7 @@ export default function CreateReview() {
     });
   
     try {
-      const response = await fetch(`${process.env.WEBSITE_URL}api/reviews`, {
+      const response = await fetch(`api/reviews`, {
         method: 'POST',
         headers: {
           "Content-type": "application/json",

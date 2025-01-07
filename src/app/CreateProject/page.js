@@ -43,7 +43,7 @@ export default function CreateProject() {
     });
   
     try {
-      const response = await fetch(`${process.env.WEBSITE_URL}/api/projects`, {
+      const response = await fetch(`/api/projects`, {
         method: 'POST',
         headers: {
           "Content-type": "application/json",
