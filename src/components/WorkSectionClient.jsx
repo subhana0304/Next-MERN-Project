@@ -4,8 +4,10 @@ import { motion } from "framer-motion"
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect } from 'react'
+import { useSession } from "next-auth/react"
 
 export default function WorkSectionClient({ projects }) {
+    const { data: session, status } = useSession();
 
     useEffect(() => {
         const header = document.querySelector('.header-section');
@@ -100,7 +102,7 @@ export default function WorkSectionClient({ projects }) {
                 {projects.map((project) => (
                     <Link
                         href={project.link}
-                        key={project.title}
+                        key={project._id}
                         className="project-card group flex-none w-[600px] h-[500px] opacity-0 transform translate-y-10 transition-all duration-700 ease-out"
                         aria-label={`View details of ${project.title}`}
                     >
@@ -143,18 +145,38 @@ export default function WorkSectionClient({ projects }) {
                 <div className="footer flex items-center justify-center m-16">
                     <div className="text-center">
                         <h2 className="text-4xl font-bold mb-6">View More</h2>
-                        <Link href={"/CreateProject"}>
-                            <button className="rounded-full border-[#545cFf] border text-center overflow-hidden px-7 py-4">
-                                <motion.span
-                                    initial={{ y: 0 }}
-                                    whileHover={{ y: ["130%", "0%"] }}
-                                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="block text-[24px] font-medium"
-                                >
-                                    Create More
-                                </motion.span>
-                            </button>
-                        </Link>
+                        {status === 'authenticated' ?
+                            (<>
+                                <Link href={"/CreateProject"}>
+                                    <button className="rounded-full border-[#545cFf] border text-center overflow-hidden px-7 py-4">
+                                        <motion.span
+                                            initial={{ y: 0 }}
+                                            whileHover={{ y: ["130%", "0%"] }}
+                                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                                            className="block text-[24px] font-medium"
+                                        >
+                                            Create More
+
+                                        </motion.span>
+                                    </button>
+                                </Link>
+                            </>) :
+                            (<>
+                                <Link href={"#"}>
+                                    <button className="rounded-full border-[#545cFf] border text-center overflow-hidden px-7 py-4">
+                                        <motion.span
+                                            initial={{ y: 0 }}
+                                            whileHover={{ y: ["130%", "0%"] }}
+                                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                                            className="block text-[24px] font-medium"
+                                        >
+                                            Case Study
+
+                                        </motion.span>
+                                    </button>
+                                </Link>
+                            </>)
+                        }
                     </div>
                 </div>
             </div>

@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { motion } from "framer-motion"
 import Link from 'next/link'
 import { useRef, useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
-export default function ReviewSectionClient({reviews}) {
+export default function ReviewSectionClient({ reviews }) {
+    const { data: session, status } = useSession();
     const scrollRef = useRef(null)
     const [visibleItems, setVisibleItems] = useState([])
 
@@ -57,13 +59,12 @@ export default function ReviewSectionClient({reviews}) {
                             </div>
                             {reviews.map((review, index) => (
                                 <div
-                                    key={review.author}
+                                    key={review._id}
                                     data-index={index}
-                                    className={`testimonial-card flex flex-col items-start justify-center mt-20 p-8 mb-6 border rounded-3xl border-gray-600 transition-transform duration-500 ${
-                                        visibleItems.includes(index.toString())
+                                    className={`testimonial-card flex flex-col items-start justify-center mt-20 p-8 mb-6 border rounded-3xl border-gray-600 transition-transform duration-500 ${visibleItems.includes(index.toString())
                                             ? 'animate-zoom-in-up'
                                             : 'animate-zoom-out-down'
-                                    }`}
+                                        }`}
                                     style={{
                                         height: '500px',
                                         scrollSnapAlign: 'start',
@@ -89,18 +90,21 @@ export default function ReviewSectionClient({reviews}) {
                             ))}
                         </div>
                         <div className="mt-10 text-center">
-                        <Link href={"/CreateReview"}>
-                            <button className="rounded-full border-[#545cFf] border text-center text-[#5456ff] overflow-hidden px-7 py-4">
-                                <motion.span
-                                    initial={{ y: 0 }}
-                                    whileHover={{ y: ["130%", "0%"] }}
-                                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="block text-[24px] font-medium"
-                                >
-                                    Create New Review
-                                </motion.span>
-                            </button>
-                        </Link>
+                            {status === 'authenticated' ?
+                                (<>
+                                    <Link href={"/CreateReview"}>
+                                        <button className="rounded-full border-[#545cFf] border text-center text-[#5456ff] overflow-hidden px-7 py-4">
+                                            <motion.span
+                                                initial={{ y: 0 }}
+                                                whileHover={{ y: ["130%", "0%"] }}
+                                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                                className="block text-[24px] font-medium"
+                                            >
+                                                Create New Review
+                                            </motion.span>
+                                        </button>
+                                    </Link> </>) : (<><span></span></>)
+                            }
                         </div>
                     </div>
                 </div>
