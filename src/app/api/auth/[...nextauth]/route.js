@@ -54,7 +54,11 @@ export const authOptions = {
                 };
             }
             return session;
-        }
+        },
+        async redirect({ url, baseUrl }) {
+            // Ensure redirect URLs are relative to the deployed domain
+            return baseUrl;
+        },
     }
 };
 
