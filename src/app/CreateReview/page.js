@@ -38,7 +38,7 @@ export default function CreateReview() {
     });
   
     try {
-      const response = await fetch('https://next-mern-project-604r16s9q-subhana0304s-projects.vercel.app/api/reviews', {
+      const response = await fetch(`${process.env.WEBSITE_URL}/api/reviews`, {
         method: 'POST',
         headers: {
           "Content-type": "application/json",

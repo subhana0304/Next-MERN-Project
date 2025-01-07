@@ -1,6 +1,6 @@
 export default async function getProjects() {
     const result = await fetch(
-        "https://next-mern-project-604r16s9q-subhana0304s-projects.vercel.app/api/projects",
+        `${process.env.WEBSITE_URL}/api/projects`,
         { 
           cache: 'no-store' // Disable caching
         }
