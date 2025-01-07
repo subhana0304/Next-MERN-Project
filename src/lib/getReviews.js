@@ -1,6 +1,6 @@
 export default async function getReviews() {
     const result = await fetch(
-        `${process.env.WEBSITE_URL}/api/reviews`,
+        `${process.env.NEXTAUTH_URL}/api/reviews`,
         { 
           cache: 'no-store'
         }

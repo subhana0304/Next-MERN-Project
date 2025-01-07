@@ -1,6 +1,6 @@
 export default async function getProjects() {
     const result = await fetch(
-        `${process.env.WEBSITE_URL}/api/projects`,
+        `${process.env.NEXTAUTH_URL}/api/projects`,
         { 
           cache: 'no-store' // Disable caching
         }
