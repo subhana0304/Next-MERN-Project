@@ -43,7 +43,7 @@ export default function CreateProject() {
     });
   
     try {
-      const response = await fetch('https://next-mern-project.vercel.app/api/projects', {
+      const response = await fetch('https://next-mern-project-604r16s9q-subhana0304s-projects.vercel.app/api/projects', {
         method: 'POST',
         headers: {
           "Content-type": "application/json",
