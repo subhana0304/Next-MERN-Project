@@ -7,9 +7,9 @@ import ExperiencedTeam from "@/components/ExperiencedTeam";
 import GlobalCompanies from "@/components/GlobalCompanies";
 import Hero from "@/components/Hero";
 import ImgSection from "@/components/ImgSection";
+import ReviewSection from "@/components/ReviewSection";
 import RunningText from "@/components/RunningText";
 import Services from "@/components/Services";
-import Testimonial from "@/components/Testimonial";
 import WorkSection from "@/components/WorkSection";
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
       <ExperiencedTeam></ExperiencedTeam>
       <CraftingDigital></CraftingDigital>
       <Services></Services>
-      <Testimonial></Testimonial>
+      <ReviewSection></ReviewSection>
       <Contact></Contact>
     </main>
   );

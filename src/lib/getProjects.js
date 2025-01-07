@@ -2,12 +2,11 @@ export default async function getProjects() {
     const result = await fetch(
         "http://localhost:3000/api/projects",
         { 
-          cache: 'force-cache',
-          next: { revalidate: 3600 } 
+          cache: 'no-store' // Disable caching
         }
     );
     
-    if(!result.ok){
+    if (!result.ok) {
         throw new Error("There was an Error fetching posts");
     }
     

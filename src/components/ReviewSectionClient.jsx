@@ -1,41 +1,10 @@
 'use client'
 import Image from 'next/image'
+import { motion } from "framer-motion"
+import Link from 'next/link'
 import { useRef, useEffect, useState } from 'react'
 
-const testimonials = [
-    {
-        quote: "We have worked with Artistsweb to build a complete new website with quite complex connections with our CRM and accounting functions. The end product is brilliant, a really first class blend of design and functionality and the speed and depth of understanding about our business was remarkable. I'd highly recommend them.",
-        author: "Steven Glibbery",
-        company: "TGA Mobility",
-        image: "https://d3aj5vjnhssdu4.cloudfront.net/wp-content/uploads/tga-logo-250x250.jpg"
-    },
-    {
-        quote: "Artistsweb built our new website and it has been an absolute pleasure working with the whole team. Excellent communication and they built us just an incredible looking website.",
-        author: "Nathan Smith",
-        company: "Tech SuperPowers",
-        image: "https://d3aj5vjnhssdu4.cloudfront.net/wp-content/uploads/nathan-s-250x250.jpg"
-    },
-    {
-        quote: "Artistsweb are a great team of professionals to work with. They listened to our requirements very closely and delivered complex solutions with detail and outstanding creativity and more importantly to deadlines other agencies could not previously meet. We would highly recommend them to any corporation looking for a talented team of digital strategists, designers and developers.",
-        author: "David Cortes",
-        company: "Costa Coffee",
-        image: "https://d3aj5vjnhssdu4.cloudfront.net/wp-content/uploads/costa-coffee-250x250.jpg"
-    },
-    {
-        quote: "In the years we've worked with Artistsweb, they have consistently been a solid, reliable, dedicated and effective partner. We value greatly their capacity to work quickly and the advice that they give us. Their knowledge and development skillset is unrivalled compared to other digital agencies we've worked with and we shall continue to collaborate with them undoubtedly, for many years to come.",
-        author: "Oliver Cripps",
-        company: "Media Tree",
-        image: "https://d3aj5vjnhssdu4.cloudfront.net/wp-content/uploads/mediatree-250x250.jpg"
-    },
-    {
-        quote: "I had the absolute privilege of working with this wonderful team. The work they presented for my webpage was exactly what I had in mind. They are a team of talented artists who understood the concept and managed to deliver exactly what I was looking for. You don't need to look any further if you're looking for quality, professionalism, and a total artistic perspective. These guys are amazing! I won't leave them.",
-        author: "Fortunato Angelini",
-        company: "Re-Core Pilates",
-        image: "https://d3aj5vjnhssdu4.cloudfront.net/wp-content/uploads/website-design-agency-london-250x250.jpeg"
-    }
-]
-
-export default function Testimonial() {
+export default function ReviewSectionClient({reviews}) {
     const scrollRef = useRef(null)
     const [visibleItems, setVisibleItems] = useState([])
 
@@ -86,9 +55,9 @@ export default function Testimonial() {
                                     Keep scrolling
                                 </div>
                             </div>
-                            {testimonials.map((testimonial, index) => (
+                            {reviews.map((review, index) => (
                                 <div
-                                    key={testimonial.author}
+                                    key={review.author}
                                     data-index={index}
                                     className={`testimonial-card flex flex-col items-start justify-center mt-20 p-8 mb-6 border rounded-3xl border-gray-600 transition-transform duration-500 ${
                                         visibleItems.includes(index.toString())
@@ -101,23 +70,37 @@ export default function Testimonial() {
                                     }}
                                 >
                                     <blockquote className="mb-4 text-[31px] font-semibold text-white">
-                                        {testimonial.quote}
+                                        {review.quote}
                                     </blockquote>
                                     <div className="flex items-center justify-between w-full">
                                         <div className="flex items-center gap-4">
                                             <Image
                                                 className="rounded-full"
-                                                src={testimonial.image}
-                                                alt={testimonial.author}
+                                                src={review.image}
+                                                alt={review.author}
                                                 width={70}
                                                 height={70}
                                             />
-                                            <div className="text-gray-400 text-[23px]">{testimonial.author}</div>
+                                            <div className="text-gray-400 text-[23px]">{review.author}</div>
                                         </div>
-                                        <div className="text-blue-400 text-[24px]">{testimonial.company}</div>
+                                        <div className="text-blue-400 text-[24px]">{review.company}</div>
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="mt-10 text-center">
+                        <Link href={"/CreateReview"}>
+                            <button className="rounded-full border-[#545cFf] border text-center text-[#5456ff] overflow-hidden px-7 py-4">
+                                <motion.span
+                                    initial={{ y: 0 }}
+                                    whileHover={{ y: ["130%", "0%"] }}
+                                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                                    className="block text-[24px] font-medium"
+                                >
+                                    Create New Review
+                                </motion.span>
+                            </button>
+                        </Link>
                         </div>
                     </div>
                 </div>

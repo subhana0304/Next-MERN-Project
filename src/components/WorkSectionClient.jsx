@@ -17,7 +17,8 @@ export default function WorkSectionClient({ projects }) {
 
             const isAtStart = container.scrollLeft === 0;
             const isAtEnd =
-                Math.round(container.scrollLeft) >= container.scrollWidth - container.clientWidth;
+                Math.round(container.scrollLeft) >=
+                container.scrollWidth - container.clientWidth;
 
             if (isAtStart && e.deltaY < 0) {
                 // Allow vertical scrolling when at the start and scrolling up
@@ -63,6 +64,7 @@ export default function WorkSectionClient({ projects }) {
             container?.removeEventListener('wheel', handleWheel);
         };
     }, []);
+
 
     return (
         <section className="container mx-auto my-24 px-16">
