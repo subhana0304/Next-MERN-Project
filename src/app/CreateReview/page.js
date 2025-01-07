@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CreateReview() {
+  
   const [formData, setFormData] = useState({
     quote: "",
     author: "",
@@ -38,7 +39,7 @@ export default function CreateReview() {
     });
   
     try {
-      const response = await fetch(`${process.env.WEBSITE_URL}/api/reviews`, {
+      const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: {
           "Content-type": "application/json",
