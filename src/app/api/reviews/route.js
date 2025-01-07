@@ -50,7 +50,7 @@ export async function POST(request) {
   export async function GET() {
     try {
       await connectMongoDB(); // Ensure the DB connection is established once
-      const reviews = await Review.find();
+      const reviews = await Review.find().sort({ createdAt: -1 }); // Sort by `createdAt` in descending order
       return NextResponse.json({ reviews });
     } catch (error) {
       console.error("API Error:", error);

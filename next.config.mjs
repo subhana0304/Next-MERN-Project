@@ -14,5 +14,13 @@ const nextConfig = {
     experimental: {
       reactMode: 'concurrent', // Or disable if you're not using concurrent mode
     },
+    onRecoverableError: (err) => {
+      // Ignore hydration errors
+      if (err.message.includes('Hydration failed')) {
+        return;
+      }
+      // Log other errors as usual
+      console.error(err);
+    },
   };
 export default nextConfig;

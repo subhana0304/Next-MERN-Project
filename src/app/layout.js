@@ -22,14 +22,14 @@ export default function RootLayout({ children }) {
       <body
         className={onest.className}
       >
-        <div className="">
+        
           <PreLoader></PreLoader>
           <AuthProvider>
           <Navbar></Navbar>
           {children}
           <Footer></Footer>
           </AuthProvider>
-        </div>
+        
       </body>
     </html>
   );

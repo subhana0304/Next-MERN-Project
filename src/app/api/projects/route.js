@@ -50,7 +50,7 @@ export async function POST(request) {
 export async function GET() {
   try {
     await connectMongoDB(); // Ensure the DB connection is established once
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ createdAt: -1 });
     return NextResponse.json({ projects });
   } catch (error) {
     console.error("API Error:", error);
