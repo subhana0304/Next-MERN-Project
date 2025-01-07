@@ -1,6 +1,6 @@
 export default async function getReviews() {
     const result = await fetch(
-        "http://localhost:3000/api/reviews",
+        "https://next-mern-project.vercel.app/api/reviews",
         { 
           cache: 'no-store'
         }
