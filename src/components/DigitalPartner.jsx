@@ -20,16 +20,16 @@ export default function DigitalPartner() {
                             help bring ideas to life and create brands, websites <br />
                             & digital products that work.</p>
                     </div>
-                    <div className="flex items-center gap-5 mt-20">
+                    <div className="dpart-lb flex  items-center gap-5 mt-20">
                         <Image
                             data-aos="fade-up"
                             src="/images/cd.png"
                             alt="Description of image"
                             width={150}
                             height={150}
-                            className='rounded-full'
+                            className='dpart-lb-img rounded-full'
                         />
-                        <p data-aos="fade-up" className='text-[23px] font-medium text-gray-500'>Brands who've trusted us...</p>
+                        <p data-aos="fade-up" className='text-[23px] font-medium text-gray-500 dpart-lb-text'>Brands who've trusted us...</p>
                     </div>
                 </div>
                 <div className='flex items-end'>

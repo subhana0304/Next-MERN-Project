@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Services() {
     return (
-        <div className='px-16'>
+        <div className='px-16 mb-20'>
             <div className='px-2'>
                 <h2 className='text-[54px] font-semibold'>
                     We’re good at

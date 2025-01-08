@@ -14,7 +14,7 @@ export default function CraftingDigital() {
                         <span className="text-end">
                             <span className="text-end">Crafting digital</span> <br />
                             <span
-                                className="text-gradient-anim text-end"
+                                className="text-gradient-anim-craft text-end"
                                 style={{
                                     position: 'relative',
                                     display: 'inline-block',

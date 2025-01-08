@@ -15,7 +15,7 @@ const RunningText = () => {
   return (
     <section
       ref={sectionRef}
-      className="running-text flex items-center justify-center overflow-hidden ps-96 my-40"
+      className="running-text flex items-center justify-center overflow-hidden ps-96 mt-20 mb-60"
     >
       <motion.span
         className="h1 text-[119px] font-bold whitespace-nowrap ms-40 ps-40"

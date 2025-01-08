@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 
 export default function PreLoader() {
     const [loading, setLoading] = useState(true)
+    const [hide, setHide] = useState(false) // State to trigger the animation
 
     useEffect(() => {
         // Simulate loading time - replace with your actual loading logic
         const timer = setTimeout(() => {
-            setLoading(false)
+            setHide(true) // Start the animation
+            setTimeout(() => setLoading(false), 1000) // Wait for the animation to complete before removing
         }, 2000) // 2 seconds to show the animation
 
         return () => clearTimeout(timer)
@@ -17,7 +19,11 @@ export default function PreLoader() {
     if (!loading) return null
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <div
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black transition-transform duration-1000 ${
+                hide ? 'translate-x-full' : 'translate-x-0'
+            }`}
+        >
             {/* Center Logo */}
             <div className="text-white text-6xl font-bold tracking-tighter">
                 <svg

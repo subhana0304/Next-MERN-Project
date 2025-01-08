@@ -36,12 +36,12 @@ export default function ReviewSectionClient({ reviews }) {
     return (
         <section className="bg-gradient-left bg-black px-16 py-20">
             <div className="container mx-auto px-2">
-                <div className="mb-16">
+                <div className="">
                     <div className="mt-16">
                         {/* Testimonial Scrolling Section */}
                         <div
                             ref={scrollRef}
-                            className="h-[500px] w-full overflow-y-scroll p-16 rounded-lg scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800 custom-scrollbar"
+                            className="scroll-section h-[500px] w-full overflow-y-scroll p-16 rounded-lg scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800 custom-scrollbar"
                         >
                             <h2 className="mb-6 text-4xl font-bold text-white md:text-6xl">
                                 Client Feedback

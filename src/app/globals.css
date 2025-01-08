@@ -50,6 +50,28 @@ body {
     -webkit-animation-timing-function: linear;
     -o-animation-timing-function: linear;
     animation-timing-function: linear;
+    z-index: -1;
+}
+.text-gradient-anim-craft {
+  background: -webkit-linear-gradient(left, #545cff, #1f2246, #545cff);
+  background-size: 1600px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-name: gradientMove;
+  -o-animation-name: gradientMove;
+  animation-name: gradientMove;
+  -webkit-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 
@@ -109,6 +131,24 @@ body {
     }
   }
   
+  .project-card{
+    z-index: -1;
+  }
+  .dpart-lb{
+    z-index: -1 !important;
+  }
+  .dpart-lb-img{
+    z-index: -1 !important;
+  }
+  .dpart-lb-text{
+    z-index: -1 !important;
+  }
+  .img-section{
+    z-index: -1 !important;
+  }
+  .scroll-section{
+    z-index: -1 !important;
+  }
   
 /* blue background */
 .bg-gradient-bottom {
@@ -142,6 +182,7 @@ body {
   transform: translateX(100px);
   opacity: 0;
   transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+  z-index: -1;
 }
 
 .animate-header {

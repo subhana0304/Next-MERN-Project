@@ -11,7 +11,7 @@ export default function Contact() {
         <div className='px-16 my-20'>
             <div className='grid grid-cols-2 px-2'>
                 <div>
-                    <h2 className='text-[38px] font-semibold'>We love crafting unforgettable digital experiences, brands and websites with people like you.</h2>
+                    <h2 className='text-[40px] font-semibold'>We love crafting unforgettable digital experiences, brands and websites with people like you.</h2>
                     <div className='flex items-end mt-20'>
                         <div className=''>
                             <p className='text-[16px] text-gray-700'>Get in touch</p>
@@ -23,7 +23,7 @@ export default function Contact() {
                 </div>
                 <div className='ps-10 ms-10 flex flex-col gap-8'>
                     <div>
-                        <div className='bg-black p-3 ms-10 rounded-3xl text-center'>
+                        <div className='bg-black p-3 ms-10 rounded-[30px] text-center'>
                             <div className="flex justify-between px-6 items-center">
                                 <p className='text-[20px] text-white'>Follow us</p>
                                 <div className='flex items-center text-white'>

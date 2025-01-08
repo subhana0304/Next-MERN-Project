@@ -35,7 +35,7 @@ export default function ImgSection() {
     }, [height, lastScrollY]);
 
     return (
-        <div className="px-16">
+        <div className="img-section px-16">
             <div
                 style={{
                     position: 'relative',
@@ -53,6 +53,7 @@ export default function ImgSection() {
                     style={{
                         objectFit: 'cover',
                         borderRadius: '20px',
+                        zIndex:'-1'
                     }}
                 />
             </div>

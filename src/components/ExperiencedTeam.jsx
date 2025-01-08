@@ -9,12 +9,12 @@ export default function ExperiencedTeam() {
                 <div className='flex items-end'>
                     <div className="flex gap-10">
                         <div className='text-center'>
-                            <h1 className='text-[54px] font-semibold'>250</h1>
-                            <p className='text-[24px] mt-5'>Five-Star Reviews</p>
+                            <h1 className='text-[54px] font-semibold text-start'>250</h1>
+                            <p className='text-[24px] mt-5 text-start'>Five-Star Reviews</p>
                         </div>
                         <div className='text-center ps-10'>
-                            <h1 className='text-[54px] font-semibold'>10</h1>
-                            <p className='text-[24px] mt-5'>In-House Experts</p>
+                            <h1 className='text-[54px] font-semibold text-start'>10</h1>
+                            <p className='text-[24px] mt-5 text-start'>In-House Experts</p>
                         </div>
                     </div>
                 </div>
