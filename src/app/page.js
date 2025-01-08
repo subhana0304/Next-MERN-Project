@@ -15,6 +15,7 @@ import WorkSection from "@/components/WorkSection";
 export default function Home() {
   return (
     <main className="main">
+      <h1>Hello</h1>
       <Hero></Hero>
       <CaseStudies></CaseStudies>
       <WorkSection></WorkSection>
